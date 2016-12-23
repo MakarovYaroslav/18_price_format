@@ -1,19 +1,21 @@
-def add_spaces_around_symbols(string):
+def add_spaces_around_symbols(price_as_string):
     count_of_symbols_to_separate = 3
-    new_string = str()
-    while len(string) >= count_of_symbols_to_separate:
-        new_string = string[-count_of_symbols_to_separate:] + ' ' + new_string
-        string = string[:-count_of_symbols_to_separate]
-    if string:
-        return "%s %s" % (string, new_string)
+    new_price_as_string = str()
+    while len(price_as_string) >= count_of_symbols_to_separate:
+        new_price_as_string = "%s %s" % (
+            price_as_string[-count_of_symbols_to_separate:],
+            new_price_as_string)
+        price_as_string = price_as_string[:-count_of_symbols_to_separate]
+    if price_as_string:
+        return "%s %s" % (price_as_string, new_price_as_string)
     else:
-        return new_string
+        return new_price_as_string
 
 
 def test_price(price):
     try:
         float(price)
-        left, right = price.split('.')
+        left_part_of_price, right_part_of_price = price.split('.')
     except ValueError:
         print("Введите корректное значение!")
         return False
