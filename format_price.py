@@ -33,7 +33,8 @@ def format_price(price):
 
 
 if __name__ == '__main__':
-    value = input("Введите цену, которую необходимо отформатировать: ")
-    formatted_price = format_price(value)
+    price_to_format = input("Введите цену,"
+                            " которую необходимо отформатировать: ")
+    formatted_price = format_price(price_to_format)
     if formatted_price:
         print("Отформатированная цена: %s" % formatted_price)
