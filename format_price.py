@@ -16,17 +16,15 @@ def test_price(price):
     try:
         float(price)
         left_part_of_price, right_part_of_price = price.split('.')
-    except ValueError:
-        print("Введите корректное значение!")
-        return False
-    else:
         return True
+    except ValueError:
+        return False
 
 
 def format_price(price):
     fractional_part_max_value = 5
     if not test_price(price):
-        return False
+        return None
     integer_part, fractional_part = price.split('.')
     if int(fractional_part[0]) >= fractional_part_max_value:
         integer_part = str(int(integer_part) + 1)
@@ -38,5 +36,7 @@ if __name__ == '__main__':
     price_to_format = input("Введите цену,"
                             " которую необходимо отформатировать: ")
     formatted_price = format_price(price_to_format)
-    if formatted_price:
+    if formatted_price is None:
+        print("Введите корректное значение!")
+    else:
         print("Отформатированная цена: %s" % formatted_price)
